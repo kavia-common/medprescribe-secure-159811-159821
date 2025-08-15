@@ -38,10 +38,13 @@ app = FastAPI(
     openapi_tags=openapi_tags,
 )
 
-# CORS setup - allows configuration via env (CORS_ORIGINS as comma separated list) or defaults to "*"
+# CORS setup:
+# - allow_origins: from env CORS_ORIGINS (CSV) or sensible defaults for localhost and preview hosts
+# - allow_origin_regex: from env CORS_ORIGIN_REGEX to support matching preview URLs dynamically
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
+    allow_origin_regex=settings.CORS_ORIGIN_REGEX,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
