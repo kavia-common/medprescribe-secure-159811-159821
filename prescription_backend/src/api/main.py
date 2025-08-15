@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.api.config import get_settings
 from src.api.db import init_db
+from src.api.routers import auth_router, prescriptions_router, verify_router
 
 settings = get_settings()
 
@@ -67,3 +68,9 @@ def health_check():
         JSON object with a message confirming the API is healthy.
     """
     return {"message": "Healthy"}
+
+
+# Include application routers
+app.include_router(auth_router)
+app.include_router(prescriptions_router)
+app.include_router(verify_router)
