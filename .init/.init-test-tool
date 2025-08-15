@@ -1,0 +1,4 @@
+{
+    "command": "pytest",
+    "working_directory": "/home/kavia/workspace/code-generation/medprescribe-secure-159811-159821/prescription_backend"
+}
